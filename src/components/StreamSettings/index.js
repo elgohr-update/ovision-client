@@ -1,5 +1,4 @@
-import React from 'react';
-import './styles.scss';
+import React from 'react';import './styles.scss';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 export const StreamSettings = () => {
