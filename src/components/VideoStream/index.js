@@ -12,6 +12,7 @@ export const VideoStream = () => {
             <p>Online</p>
           </div>
         </div>
+        <div className="UserCamera"></div>
       </div>
     </div>
   );
