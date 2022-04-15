@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';import { Col, Row } from 'react-bootstrap';
 import api from '../../api';
 import { StreamSettings } from '../../components/StreamSettings';
 import { UserParams } from '../../components/UserParams';
@@ -25,19 +24,18 @@ export const Home = () => {
 
   return (
     <div className="Home">
-      <Row className="g-0 h-100" >
-        <Col xl={3} >
-          <StreamSettings/>
-          
+      <Row xl={12} className="g-0 h-100">
+        <Col xl={3} lg={2}>
+          <StreamSettings />
         </Col>
-        <Col  xs={6}>
+        <Col xs={6} lg={6}>
           <VideoStream />
         </Col>
-        <Col xs={3}>
+        <Col xs={3} lg={3}>
           <UserParams />
         </Col>
       </Row>
-    
+
       {/* {image && <img src={image} alt="foxy" />} */}
     </div>
   );
