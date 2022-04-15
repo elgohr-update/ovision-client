@@ -1,4 +1,7 @@
-.UserParams {  background: #000080;
+.UserParams {
+  background: #000080;
+  text-align: center;
+  padding-top: 50px;
 
   .UserParams__title {
     font-size: 20px;
@@ -9,8 +12,5 @@
     color: white;
     text-align: center;
     border-top-left-radius: 10px; /* Левый верхний уголок */
-  }
-  .ListGroup {
-    background: #000080;
   }
 }
