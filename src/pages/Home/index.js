@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import api from '../../api';
+import { UserParams } from '../../components/UserParams';
+import { VideoStream } from '../../components/VideoStream';
 import { useLoader } from '../../hooks/useLoader';
 import './styles.scss';
 
@@ -19,5 +22,17 @@ export const Home = () => {
     // eslint-disable-next-line
   }, []);
 
-  return <div className="Home">{image && <img src={image} alt="foxy" />}</div>;
+  return (
+    <div className="Home">
+      <Row>
+        <Col xs={6}>
+          <VideoStream />
+        </Col>
+        <Col xs={6}>
+          <UserParams />
+        </Col>
+      </Row>
+      {/* {image && <img src={image} alt="foxy" />} */}
+    </div>
+  );
 };
