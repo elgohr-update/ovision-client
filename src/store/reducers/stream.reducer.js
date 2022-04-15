@@ -1,7 +1,7 @@
-import { SET_STREAM_SOURCE } from '../actionTypes';
+import { CANCEL_WEBSOCKET, SET_STREAM_SOURCE } from '../actionTypes';
 
 const initialStreamState = {
-  source: null
+  source: undefined
 };
 
 export const streamReducer = (state = initialStreamState, action) => {
@@ -10,6 +10,11 @@ export const streamReducer = (state = initialStreamState, action) => {
       return {
         ...state,
         source: action.payload
+      };
+    case CANCEL_WEBSOCKET:
+      return {
+        ...state,
+        source: undefined
       };
     default:
       return state;
