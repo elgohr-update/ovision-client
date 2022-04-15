@@ -1,13 +1,12 @@
-.VideoStream {
-  text-align: center;
+.VideoStream {  text-align: center;
   background: #000080;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   .MainStreamBlock {
-    width: 700px;
-    height: 650px;
+    width: 480px;
+    height: 640px;
     background: white;
     border: 1px solid black;
 

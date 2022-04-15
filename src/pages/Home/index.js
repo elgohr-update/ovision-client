@@ -32,7 +32,7 @@ export const Home = () => {
         <Col xs={12} lg={7} sm={12} xl={6}>
           <VideoStream />
         </Col>
-        <Col xs={12} lg={3} sm={12} xl={3}>
+        <Col xs={6} lg={3} sm={12} xl={3}>
           <UserParams />
         </Col>
       </Row>
