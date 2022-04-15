@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react';import './styles.scss';
 
 export const VideoStream = () => {
-  return <div>VideoStream</div>;
+  return <div className=" VideoStream">VideoStream</div>;
 };

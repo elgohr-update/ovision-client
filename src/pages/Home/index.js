@@ -25,11 +25,12 @@ export const Home = () => {
 
   return (
     <div className="Home">
-      <Row>
-        <Col xl={3}>
+      <Row className="g-0 h-100" >
+        <Col xl={3} >
           <StreamSettings/>
+          
         </Col>
-        <Col xs={6}>
+        <Col  xs={6}>
           <VideoStream />
         </Col>
         <Col xs={3}>
