@@ -36,6 +36,7 @@ export const Home = () => {
           <UserParams />
         </Col>
       </Row>
+    
       {/* {image && <img src={image} alt="foxy" />} */}
     </div>
   );
