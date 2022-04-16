@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss';
 
 export const VideoStream = () => {
+<<<<<<< HEAD
   return (
     <div className="VideoStream">
       <div className="MainStreamBlock">
@@ -16,4 +17,7 @@ export const VideoStream = () => {
       </div>
     </div>
   );
+=======
+  return <video />;
+>>>>>>> paul
 };

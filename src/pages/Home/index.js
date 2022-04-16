@@ -1,43 +1,56 @@
-import React, { useEffect, useState } from 'react';import { Col, Row, Container } from 'react-bootstrap';
+import React, { useEffect, useRef, useState } from 'react';import { Button, Container, Spinner } from 'react-bootstrap';
 import api from '../../api';
-import { StreamSettings } from '../../components/StreamSettings';
-import { UserParams } from '../../components/UserParams';
-import { VideoStream } from '../../components/VideoStream';
-import { useLoader } from '../../hooks/useLoader';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
+import { CANCEL_WEBSOCKET, INIT_WEBSOCKET } from '../../store/actionTypes';
 
 export const Home = () => {
-  const [image, setImage] = useState(null);
-  const loader = useLoader();
+  const canvasRef = useRef(null);
+  const dispatch = useDispatch();
+  const stream = useSelector(state => state.stream);
+  const [streamLoader, setStreamLoader] = useState(false);
 
   useEffect(() => {
-    loader.show();
-    api
-      .getRandomFox()
-      .then(res => {
-        setImage(res.data.image);
-      })
-      .catch(err => console.log(err))
-      .finally(() => loader.hide());
-    // eslint-disable-next-line
-  }, []);
+    const canvas = canvasRef.current;
+    const image = new Image();
+    image.onload = function () {
+      canvas.drawImage(image, 0, 0);
+    };
+    image.src = stream.source;
+  }, [stream]);
+
+  const startWebsocket = async () => {
+    try {
+      setStreamLoader(true);
+      const res = await api.getUniqueRoomId();
+      const roomId = res.data.room_id;
+      dispatch({ type: INIT_WEBSOCKET, payload: roomId });
+    } catch (err) {
+      throw err;
+    } finally {
+      setStreamLoader(false);
+    }
+  };
+
+  const stopWebsocket = () => {
+    dispatch({ type: CANCEL_WEBSOCKET });
+  };
 
   return (
-    <div className="Home">
-      <Container className="Cont">
-        <Row xl={12} className="g-0 h-100">
-          <Col xl={3} lg={2}>
-            <StreamSettings />
-          </Col>
-          <Col xs={12} lg={7} sm={12} xl={6}>
-            <VideoStream />
-          </Col>
-          <Col xs={12} lg={3} sm={12} xl={3}>
-            <UserParams />
-          </Col>
-        </Row>
+    <div className="Home d-flex justify-content-center flex-column">
+      {!streamLoader || stream.source ? (
+        <canvas className="Home__video" ref={canvasRef} />
+      ) : (
+        <div className="Home__video">
+          <Spinner animation="grow" variant="primary" />
+        </div>
+      )}
+      <Container className="Home__buttons">
+        <Button onClick={startWebsocket}>Start</Button>
+        <Button variant="danger" onClick={stopWebsocket}>
+          Stop
+        </Button>
       </Container>
-      {/* {image && <img src={image} alt="foxy" />} */}
     </div>
   );
 };

@@ -1,12 +1,20 @@
-.Home {
-  width: 100vw;
-  height: 100vh;
-  // display: flex;
-  // justify-content: center;
-  background: #000080;
+.Home {  width: 100vw;
 
-  .Cont {
-    padding-left: 20px;
-    background: #000080;
+  .Home__video {
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e2e2e2;
+  }
+
+  .Home__buttons {
+    display: flex;
+    justify-content: center;
+    & > * {
+      margin: 10px;
+    }
   }
 }
